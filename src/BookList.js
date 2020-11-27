@@ -18,11 +18,11 @@ export default class Boolist extends React.Component{
        const {error}=this.state;
        if(error){
            return(
-               <div>Data not avilable{error.message}</div>
+               <div>New York Times{error.message}</div>
            )
        }else{
            return(
-               <div className="col-9 mx-auto col-md-6 col-lg-3">
+               <div className="col-14 mx-auto col-md-6 col-lg-3">
                    {this.state.datalist.map(book =>(
                        <Card style={{ width: '18rem' }}>
                        <Card.Img variant="top" src={book.book_image} />
@@ -32,7 +32,8 @@ export default class Boolist extends React.Component{
                            <Card.Text>
                                {book.description}
                            </Card.Text>
-                               <Button variant="primary">Buy Now</Button>
+                                <a href={book.amazon_product_url} className="btn btn-primary" target="_blank" style={{margin:10}}>Buy Now </a>
+                                <Button variant="primary">More</Button>
                                
                            </Card.Body>
                    </Card>
