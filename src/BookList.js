@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table} from 'react-bootstrap';
+import {Card,Button} from 'react-bootstrap';
 
 export default class Boolist extends React.Component{
     state = {
@@ -22,24 +22,21 @@ export default class Boolist extends React.Component{
            )
        }else{
            return(
-               <div>
-                   <Table>
-                       <thead>
-                           <tr>
-                               <th>Top List</th>
-                               <th>Title</th>
-                               <th>Author</th>
-                           </tr>
-                       </thead>
-                       {this.state.datalist.map(book =>(
-                         <tr key={book.rank}>
-                             <td>{book.rank}</td>
-                             <td>{book.title}</td>
-                             <td>{book.author}</td>
-
-                         </tr>  
-                       ))}
-                   </Table>
+               <div className="col-9 mx-auto col-md-6 col-lg-3">
+                   {this.state.datalist.map(book =>(
+                       <Card style={{ width: '18rem' }}>
+                       <Card.Img variant="top" src={book.book_image} />
+                           <Card.Body>
+                           <Card.Title>#Top List {book.rank}</Card.Title>
+                           <Card.Title>{book.title}</Card.Title>
+                           <Card.Text>
+                               {book.description}
+                           </Card.Text>
+                               <Button variant="primary">Buy Now</Button>
+                               
+                           </Card.Body>
+                   </Card>
+                   ))}
                </div>
            )
        }
